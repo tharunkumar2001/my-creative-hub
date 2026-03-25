@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
 const ContactSection = () => {
@@ -12,91 +12,103 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <p className="font-mono text-primary text-sm tracking-[0.2em] uppercase mb-4">Get In Touch</p>
-          <h2 className="text-3xl md:text-5xl font-bold">
-            Let's Work <span className="text-gradient-gold">Together</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+    <section id="contact" className="section-padding">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-20">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.6 }}
           >
-            <h3 className="text-xl font-semibold mb-6">Have a project in mind?</h3>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Drop me a message and let's create something amazing.
+            <p className="label-mono text-primary mb-4">Contact</p>
+            <h2 className="heading-lg mb-8">
+              Got a project?
+              <br />
+              <span className="italic font-normal">Let's make it real.</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-10 max-w-md">
+              I'm always interested in hearing about new projects. Whether you have a detailed spec or just a rough idea, let's talk about it.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <Mail className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Email</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Email</p>
                   <p className="font-medium">hello@example.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                  <MapPin className="w-4 h-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Location</p>
+                  <p className="text-xs text-muted-foreground uppercase tracking-wider">Location</p>
                   <p className="font-medium">Available Worldwide</p>
                 </div>
               </div>
             </div>
+
+            {/* Social links */}
+            <div className="flex gap-4 mt-10">
+              {["GitHub", "LinkedIn", "Twitter"].map((social) => (
+                <a
+                  key={social}
+                  href="#"
+                  className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  {social}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
+              ))}
+            </div>
           </motion.div>
 
           <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             onSubmit={handleSubmit}
-            className="space-y-4"
+            className="space-y-6"
           >
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-            />
-            <textarea
-              placeholder="Tell me about your project..."
-              required
-              rows={5}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full bg-secondary border border-border rounded-lg px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors resize-none"
-            />
-            <button
-              type="submit"
-              className="w-full bg-gradient-gold text-accent-foreground font-semibold py-3 rounded-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
-            >
+            <div>
+              <label className="label-mono text-muted-foreground mb-2 block">Name</label>
+              <input
+                type="text"
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full bg-transparent border-b-2 border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors font-body"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label className="label-mono text-muted-foreground mb-2 block">Email</label>
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full bg-transparent border-b-2 border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors font-body"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label className="label-mono text-muted-foreground mb-2 block">Message</label>
+              <textarea
+                required
+                rows={5}
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full bg-transparent border-b-2 border-border px-0 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors resize-none font-body"
+                placeholder="Tell me about your project..."
+              />
+            </div>
+            <button type="submit" className="btn-primary mt-4">
               <Send className="w-4 h-4" />
               Send Message
             </button>

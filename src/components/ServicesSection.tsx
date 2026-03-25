@@ -1,71 +1,80 @@
 import { motion } from "framer-motion";
-import { Globe, Smartphone, ShoppingCart, Layout, Code2, Rocket } from "lucide-react";
+import { Globe, Smartphone, ShoppingCart, Code2, Layout, Rocket } from "lucide-react";
 
 const services = [
   {
     icon: Globe,
     title: "Web Development",
-    description: "Modern, responsive websites built with the latest technologies. From landing pages to complex web applications.",
+    description: "Responsive, fast, and accessible websites that look incredible on every device.",
+    num: "01",
   },
   {
     icon: Smartphone,
-    title: "Android Development",
-    description: "Native Android applications with intuitive UI, smooth performance, and seamless user experiences.",
+    title: "Android Apps",
+    description: "Native Android experiences with fluid animations and offline-first architecture.",
+    num: "02",
   },
   {
     icon: ShoppingCart,
-    title: "Shopify E-Commerce",
-    description: "Custom Shopify stores with unique themes, optimized checkout flows, and revenue-driving features.",
+    title: "Shopify Stores",
+    description: "Custom storefronts that convert browsers into buyers. Theme dev & app integrations.",
+    num: "03",
   },
   {
     icon: Layout,
-    title: "WordPress Solutions",
-    description: "Tailored WordPress sites with custom themes, plugins, and powerful CMS capabilities.",
+    title: "WordPress",
+    description: "Bespoke WordPress themes and plugins. Full CMS control without the complexity.",
+    num: "04",
   },
   {
     icon: Code2,
     title: "Custom Software",
-    description: "Bespoke software solutions designed to solve unique business problems and streamline operations.",
+    description: "Tailored solutions for unique problems. APIs, dashboards, automation tools.",
+    num: "05",
   },
   {
     icon: Rocket,
     title: "Performance & SEO",
-    description: "Speed optimization, SEO strategies, and analytics setup to maximize your digital presence.",
+    description: "Speed optimization and search strategy that puts you ahead of the competition.",
+    num: "06",
   },
 ];
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-24 md:py-32 bg-card/50">
-      <div className="container mx-auto px-6">
+    <section id="services" className="section-padding bg-foreground text-background relative noise-overlay">
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6 }}
+          className="mb-16"
         >
-          <p className="font-mono text-primary text-sm tracking-[0.2em] uppercase mb-4">What I Do</p>
-          <h2 className="text-3xl md:text-5xl font-bold">
-            Services I <span className="text-gradient-gold">Offer</span>
+          <p className="label-mono text-primary mb-4">What I Do</p>
+          <h2 className="heading-lg text-background">
+            Services built around
+            <br />
+            <span className="italic font-normal text-primary">your goals</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-background/10 rounded-2xl overflow-hidden">
           {services.map((service, i) => (
             <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              key={service.num}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group bg-gradient-card border border-border rounded-xl p-8 shadow-card hover:border-primary/30 transition-all duration-300"
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className="group bg-foreground p-8 md:p-10 hover:bg-background/[0.05] transition-colors duration-500"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
+              <div className="flex items-start justify-between mb-6">
                 <service.icon className="w-6 h-6 text-primary" />
+                <span className="label-mono text-background/30">{service.num}</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{service.description}</p>
+              <h3 className="font-heading text-xl font-bold text-background mb-3">{service.title}</h3>
+              <p className="text-sm leading-relaxed text-background/60">{service.description}</p>
             </motion.div>
           ))}
         </div>
