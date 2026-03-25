@@ -15,7 +15,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="label-mono text-primary mb-8"
         >
-          Software Developer & Freelancer
+          SDE & Freelancer
         </motion.p>
 
         <motion.h1
