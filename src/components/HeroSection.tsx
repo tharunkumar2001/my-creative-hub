@@ -1,79 +1,63 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import { ArrowDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
+    <section className="relative min-h-screen flex flex-col justify-end noise-overlay section-padding pb-16 pt-32 overflow-hidden">
+      {/* Large decorative background element */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-primary/[0.06] blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[30vw] h-[30vw] rounded-full bg-accent/[0.04] blur-3xl pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+      <div className="relative z-10 max-w-6xl">
+        <motion.p
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="label-mono text-primary mb-8"
         >
-          <p className="font-mono text-primary text-sm tracking-[0.3em] uppercase mb-6">
-            {"< Developer / Freelancer />"}
-          </p>
-        </motion.div>
+          Software Developer & Freelancer
+        </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6"
+          transition={{ duration: 0.8, delay: 0.15 }}
+          className="heading-xl mb-8 text-balance"
         >
-          I Build
-          <span className="text-gradient-gold"> Digital</span>
+          I craft digital
           <br />
-          Experiences
+          products that
+          <br />
+          <span className="italic font-normal text-primary">people love</span>
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10"
-        >
-          Full-stack developer crafting websites, Android apps, Shopify stores & WordPress solutions that drive real results.
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-8 items-start sm:items-end justify-between"
         >
-          <a
-            href="#projects"
-            className="bg-gradient-gold text-accent-foreground font-semibold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity"
-          >
-            View My Work
-          </a>
-          <a
-            href="#contact"
-            className="border border-primary/30 text-foreground font-semibold px-8 py-4 rounded-lg hover:border-primary/60 transition-colors"
-          >
-            Let's Talk
+          <p className="body-lg text-muted-foreground max-w-md">
+            Websites. Android apps. E-commerce. I turn your vision into performant, beautiful software — no templates, no shortcuts.
+          </p>
+
+          <a href="#work" className="flex items-center gap-3 group">
+            <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground transition-colors">
+              See my work
+            </span>
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="w-10 h-10 rounded-full border-2 border-foreground flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all duration-300"
+            >
+              <ArrowDown className="w-4 h-4" />
+            </motion.div>
           </a>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-5 h-8 rounded-full border-2 border-primary/30 flex justify-center pt-1.5">
-          <div className="w-1 h-2 rounded-full bg-primary" />
-        </div>
-      </motion.div>
+      {/* Bottom border line */}
+      <div className="divider mt-16" />
     </section>
   );
 };
